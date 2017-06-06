@@ -24,15 +24,31 @@
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
     //Code Here
-
+var user = {
+  username: 'mitchyboy3',
+  email: 'mitchfoster3@gmail.com',
+  getUsername: function(){
+    return this.username;
+  }
+}
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
 
+user.getUsername();
 
 //Next Problem
 
 
 // Write a constructor function, including method definitions, which will make the following function invocations function properly.
 
+function Car(make, model, year){
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.miles = 0;
+  this.moveCar = function(){
+    return this.miles += 10;
+  };
+}
   //Function Invocations Here
 
 var prius = new Car('Toyota', 'Prius', 2011);
@@ -51,11 +67,12 @@ var getYear = function(){
   return this.year;
 };
 
+
 //Above you're given the getYear function. Call the getYear function with the prius then the mustang objects being the focal objects. *Don't add getYear as a property on both objects*.
 
 //Note(no tests)
   //Code Here
-
+getYear.call(mustang);
 
 //New Problem
 
@@ -69,16 +86,17 @@ var getMyUsername = function() {
  return this.username;
 };
 
-var userName = getMyUsername(); //Fix this
+var userName = getMyUsername.call(myUser); //Fix this
 
 //Above you're given an object, and  a function. What will the getMyUsername function return?
 //Note(no tests)
   //Answer Here
+// Undifined b/c the function has implicit context but there is nothing to the left of the 'dot'. 
 
 //In the example above, what is the 'this keyword' bound to when getMyUsername runs?
 
   //Answer Here
-
+// The window :-o 
 
 //Fix the getMyUsername invocation (stored in the userName variable, at the bottom of the above code) so that userName will be equal to 'iliketurtles'.
 
